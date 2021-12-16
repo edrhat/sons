@@ -1,6 +1,7 @@
-import pygame
+import pygame,os
 from tkinter import *
 
+os.system("pip install pygame")
 class Tela:
 
     def __init__(self, master):
