@@ -1,47 +1,72 @@
 import pygame
 from tkinter import *
 
-pygame.init()
+class Tela:
+
+    def __init__(self, master):
+        pygame.init()
+
+        cab = PhotoImage(file="cab.png")
+        self.img = Label(janela, image=cab)
+        self.img.cab = cab
+        self.img.place(x=0, y=530)
+        
+        self.bt_rojao = Button(janela, text="ROJÃO")
+        self.bt_rojao["font"] = ("Arial", "25")
+        self.bt_rojao.config(bg="#87CEEB", foreground="black")
+        self.bt_rojao.place(x=40, y=30)
+        self.bt_rojao.bind("<Button-1>", self.rojao)
+
+        self.bt_taca = Button(janela, text="TACA O PAU")
+        self.bt_taca["font"] = ("Arial", "25")
+        self.bt_taca.config(bg="#87CEEB", foreground="BLACK")
+        self.bt_taca.place(x=200, y=30)
+        self.bt_taca.bind("<Button-1>", self.taca)
+
+        self.bt_cafe = Button(janela, text="CAFÉ")
+        self.bt_cafe["font"] = ("Arial", "25")
+        self.bt_cafe.config(bg="#87CEEB", foreground="BLACK")
+        self.bt_cafe.place(x=445, y=30)
+        self.bt_cafe.bind("<Button-1>", self.cafe)
+
+        self.bt_cu = Button(janela, text="AI MEU C#")
+        self.bt_cu["font"] = ("Arial", "25")
+        self.bt_cu.config(bg="#87CEEB", foreground="BLACK")
+        self.bt_cu.place(x=580, y=30)
+        self.bt_cu.bind("<Button-1>", self.cu)
+
+        self.fechar = Button(janela, text="X")
+        self.fechar["font"] = ("Arial", "25")
+        self.fechar.config(bg="brown", foreground="white")
+        self.fechar.place(x=710, y=450)
+        self.fechar.bind("<Button-1>", self.fecharr)
+
+    
+
+    def fecharr(self, event):
+        janela.destroy()
+        exit()
+
+    def rojao(self, event):
+        pygame.mixer.music.load("rojao.mp3")
+        pygame.mixer.music.play()
+
+    def taca(self, event):
+        pygame.mixer.music.load("taca.mp3")
+        pygame.mixer.music.play()
+
+    def cafe(self, event):
+        pygame.mixer.music.load("cafe.mpeg")
+        pygame.mixer.music.play()
+
+    def cu(self, event):
+        pygame.mixer.music.load("cu.mpeg")
+        pygame.mixer.music.play()
 
 janela = Tk()
+Tela(janela)
 
-def rojao():
-    pygame.mixer.music.load("rojao.mp3")
-    pygame.mixer.music.play()
-
-def taca():
-    pygame.mixer.music.load("taca.mp3")
-    pygame.mixer.music.play()
-
-def cafe():
-    pygame.mixer.music.load("cafe.mpeg")
-    pygame.mixer.music.play()
-
-def cu():
-    pygame.mixer.music.load("cu.mpeg")
-    pygame.mixer.music.play()
-    
-bt_rojao = Button(janela, text="Rojão", command=rojao)
-bt_rojao["font"] = ("Arial", "25")
-bt_rojao.config(bg="darkblue", foreground="white")
-bt_rojao.place(x=40, y=30)
-
-bt_taca = Button(janela, text="Taca o pau", command=taca)
-bt_taca["font"] = ("Arial", "25")
-bt_taca.config(bg="darkgreen", foreground="white")
-bt_taca.place(x=180, y=30)
-
-bt_cafe = Button(janela, text="Café", command=cafe)
-bt_cafe["font"] = ("Arial", "25")
-bt_cafe.config(bg="brown", foreground="white")
-bt_cafe.place(x=410, y=30)
-
-bt_cu = Button(janela, text="Ai meu c#", command=cu)
-bt_cu["font"] = ("Arial", "25")
-bt_cu.config(bg="black", foreground="white")
-bt_cu.place(x=40, y=120)
-
-janela.geometry("600x400")
+janela.geometry("810x600")
 janela.resizable(width=False, height=False)
 janela.title("Sons diversos")
 janela.mainloop()
