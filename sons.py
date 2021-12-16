@@ -1,7 +1,9 @@
-import pygame,os
+import os
+os.system("pip install pygame")
+import pygame
 from tkinter import *
 
-os.system("pip install pygame")
+
 class Tela:
 
     def __init__(self, master):
@@ -36,6 +38,18 @@ class Tela:
         self.bt_cu.place(x=580, y=30)
         self.bt_cu.bind("<Button-1>", self.cu)
 
+        self.bt_fogo = Button(janela, text="FOGO")
+        self.bt_fogo["font"] = ("Arial", "25")
+        self.bt_fogo.config(bg="#87CEEB", foreground="BLACK")
+        self.bt_fogo.place(x=40, y=110)
+        self.bt_fogo.bind("<Button-1>", self.fogo)
+
+        self.bt_ovo = Button(janela, text="MEU OVO")
+        self.bt_ovo["font"] = ("Arial", "25")
+        self.bt_ovo.config(bg="#87CEEB", foreground="BLACK")
+        self.bt_ovo.place(x=180, y=110)
+        self.bt_ovo.bind("<Button-1>", self.ovo)
+
         self.fechar = Button(janela, text="X")
         self.fechar["font"] = ("Arial", "25")
         self.fechar.config(bg="brown", foreground="white")
@@ -62,6 +76,14 @@ class Tela:
 
     def cu(self, event):
         pygame.mixer.music.load("cu.mpeg")
+        pygame.mixer.music.play()
+
+    def fogo(self, event):
+        pygame.mixer.music.load("fogo.mpeg")
+        pygame.mixer.music.play()
+
+    def ovo(self, event):
+        pygame.mixer.music.load("ovo.mpeg")
         pygame.mixer.music.play()
 
 janela = Tk()
